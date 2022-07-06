@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { FolhaRepository } from './Repository/folha-repository';
+import { ContaRepository } from './Repository/conta-repository';
 import { MessageBrokerService } from './message-broker/message-broker.service';
 import { ClientsModule, Transport } from '@nestjs/microservices';
 
@@ -20,6 +20,6 @@ import { ClientsModule, Transport } from '@nestjs/microservices';
     }])
   ],
   controllers: [AppController],
-  providers: [AppService, FolhaRepository, MessageBrokerService],
+  providers: [AppService, ContaRepository, MessageBrokerService],
 })
 export class AppModule {}

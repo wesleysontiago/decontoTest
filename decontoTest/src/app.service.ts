@@ -1,21 +1,24 @@
 import { Injectable } from '@nestjs/common';
-import { createFolha } from './model/folha';
-import { FolhaRepository } from './Repository/folha-repository';
+import { createConta } from './model/conta';
+import { ContaRepository } from './Repository/conta-repository';
 
 @Injectable()
 export class AppService {
-  constructor(private readonly folhaRepository: FolhaRepository) {}
+  constructor(private readonly contaRepository: ContaRepository) {}
     
-  getFolhas(): Promise<createFolha[]> {
-    return this.folhaRepository.listar()
+  getContas(): Promise<createConta[]> {
+    return this.contaRepository.listar()
   }
 
-  async create(folha: createFolha): Promise<createFolha[]> {
-    return this.folhaRepository.cadastrar(folha)
+  async create(conta: createConta): Promise<createConta[]> {
+    return this.contaRepository.cadastrar(conta)
   }
 
-  async getFolhaBy(cpf: string, mes: number, ano: number) {
-    return this.folhaRepository.getFolhasBy(cpf, mes, ano)
-    
+  async depositar(dados:any): Promise<any> {
+    return this.contaRepository.deposit(dados)
+  }
+
+  async sacar(dados:any): Promise<any> {
+    return this.contaRepository.saque(dados)
   }
 }

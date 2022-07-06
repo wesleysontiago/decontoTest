@@ -5,7 +5,7 @@ import { ClientProxy } from '@nestjs/microservices';
 export class MessageBrokerService {
     constructor(@Inject('GREETING_SERVICE') private client: ClientProxy){}
 
-    async publishEvent(folha: any) {
-        this.client.emit('folha-created', JSON.stringify(folha));
+    async publishEvent(conta: any) {
+        this.client.emit('task_queue', JSON.stringify(conta));
     }
 }
